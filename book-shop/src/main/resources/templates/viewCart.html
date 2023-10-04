@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="layout/masterLayout :: layout(~{::main})">
+
+<body>
+<main>
+  <div class="container mt-5 active">
+
+    <div class="" th:if="${cartItems.isEmpty()}">
+      <p class="text-center lead h1 text-info m-5 p-5 text-info">No content......</p>
+    </div>
+
+    <div class="row" th:if="${!cartItems.isEmpty()}">
+      <div class="col" >
+
+        <form th:action="@{/book/checkout}" th:object="${book}"  method="post">
+          <div class="card">
+            <div class="card-header">
+              <h3>Cart View</h3>
+            </div>
+
+            <table class="table-striped table">
+              <thead>
+              <tr>
+                <td>Id</td>
+                <td>Title</td>
+                <td>Author</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td th:if="${!action}">Action</td>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="item : ${cartItems}">
+                <td th:text="${item.id}"> </td>
+                <td th:text="${item.title}"> </td>
+                <td th:text="${item.author}"> </td>
+                <td th:text="${'$'+item.price}"> </td>
+                <td>
+                      <span th:if="${item.renderer}" th:text="${item.quantity}">item</span>*
+
+                  <input type="number" th:field="*{quantitylist}" class="form-control" th:if="${!item.renderer}">
+              <span th:if="${item.renderer}" th:text="${' :: '+item.sum}"></span>
+
+
+                </td>
+
+
+                <td><a th:href="@{'/book/delete?id='+${item.id}}" th:if="${!item.renderer}" class="btn btn-outline-danger">Delete</a></td>
+
+
+              </tr>
+              <tr>
+                <td>Total :: <span th:text="${'$'+totalPrice}" class="h3 text-muted"></span></td>
+              </tr>
+              </tbody>
+            </table>
+
+            <div class="card-footer">
+              <a th:href="@{/book/books}" class="btn btn-primary">Continue Shopping</a>
+              <a th:href="@{/book/remove/all}" class="btn btn-outline-danger">Clear Cart</a>
+              <input type="submit" th:href="@{/book/checkout}" class="btn btn-success" value="Check out" ></input>
+
+            </div>
+
+          </div>
+        </form>
+
+
+        </div>
+      </div>
+    </div>
+
+</main>
+</body>
+</html>

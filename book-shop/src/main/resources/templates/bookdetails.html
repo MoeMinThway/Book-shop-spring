@@ -1,0 +1,120 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="layout/masterLayout :: layout(~{::main})">
+
+<body>
+<main role="main">
+  <div class="container mt-5 active"  >
+
+
+  <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <img th:src="${book.imageUrl}" class="card-img" alt="">
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+    <div class="col-md-6">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+
+              <h3 class="card-title" th:text="${book.title}"></h3>
+              <h3 class="card-subtitle" th:text="${book.author}"></h3>
+              <h3 class="card-title" th:text="${'$'+book.price}"></h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores enim ipsam quasi quidem reiciendis, unde voluptates voluptatum! Ad commodi doloremque fuga fugit laboriosam nisi pariatur quaerat ratione. Illo, nobis, sit?</p>
+              <h3 class="card-title" th:text="${book.publishedDate}"></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
+
+<div class="row my-3">
+      <div class="col">
+        <a th:href="@{/book/books}" class="btn btn-info">Continue Shopping</a>
+        <a th:href="@{'/book/books/add?id='+${book.id}}" class="btn btn-primary">AddCart</a>
+        <a th:href="@{/book/books/view/cart}" class="btn btn-success">ViewCart</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>
+
+
+
+
+
+
+<!--
+
+<!DOCTYPE html>
+<html th:replace="layout/masterLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+  <div class="container mt-5">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+
+              <img th:src="${book.imageUrl}"
+                   class="card-img" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col">
+            <div class="card p-3 text-center">
+
+              <h3 class="card-title" th:text="${book.title}"></h3>
+              <h4 class="card-subtitle" th:text="${'Auther Name - '+book.author}"></h4>
+              <p class="card-text" th:text="${'Price - $'+ book.price}"></p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, amet!</p>
+              <p class="card-text" th:text="${'Published on -'+ book.publishedDate}"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row my-3">
+      <div class="col">
+        <a th:href="@{/book/books}" class="btn btn-primary mr-2">Continue Shopping</a>
+        <a th:href="@{'/book/books/add?id='+ ${book.id}}" class="btn btn-secondary">AddCart</a>
+        <a href="">ViewCart</a>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
+
+
+-->

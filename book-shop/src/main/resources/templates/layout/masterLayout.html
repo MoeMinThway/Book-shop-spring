@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html th:fragment="layout(main)" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css"
+        th:href="@{/bootstrap/css/bootstrap.min.css}">
+
+  <link rel="stylesheet" href="../../static/bootstrap/css/custom.css"
+        th:href="@{/bootstrap/css/custom.css }">
+  <!--    font awesome    -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+  <!--    google font     -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+
+
+</head>
+<body>
+
+<div class="" th:replace="fragement/navbar :: navbar"></div>
+<div id="overlay"></div>
+
+<section  class="text-white" >
+<!---->
+  <div id="headimg" class="jumbotron jumbotron-fluid justify-content-center">
+
+
+   <div class="container">
+     <h1 class="display-4 ">Amazing Book Store SHOP</h1>
+     <p class=" lead display-md-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, sapiente.</p>
+     <button id="book" class="btn btn-lg btn-info px-5">Read More</button>
+   </div>
+
+  </div>
+</section>
+
+<div class="">
+  <div class="row">
+    <div class="col-md-10"></div>
+    <div class="col-md-2">
+     <h3>
+       <a th:href="@{/book/books/view/cart}">
+       <i class="fas fa-shopping-cart">
+
+       </i>
+         <span class="badge badge-info" th:text="${cardSize}" ></span>
+     </a>
+     </h3>
+    </div>
+  </div>
+</div>
+
+<div class="" th:replace="${main}"></div>
+
+<div class="" th:replace="fragement/footer.html ::footer"></div>
+
+</body>
+</html>
